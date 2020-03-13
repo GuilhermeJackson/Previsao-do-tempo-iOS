@@ -18,7 +18,7 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCity()
-        
+        print(places.count)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -46,12 +46,12 @@ class TableViewController: UITableViewController {
         let cellIdentifier = "cityPlace"
         
         guard let cells = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? cell  else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeugited cell is not an instance of TableViewController.")
             }
         let place = places[indexPath.row]
             
         cells.namePlace.text = place.name
-        cells.descriptionPlace.text = place.description
+        cells.descriptionPlace.text = place.placeDescription
         cells.celsius.text = place.temperature
         
         // Configure the cell...
@@ -64,16 +64,17 @@ class TableViewController: UITableViewController {
         listCity(city: "São Paulo") {
             (response : Dictionary<String, Any>)in
             let nomePlace = response["name"] as? String ?? ""
-            debugPrint(response["weather"])
-            let weather = response["weather"] as? [NSObject?]
-            debugPrint(weather!)
-            // let descrip = weather[0]["description"] ?? ""
-            //let icon = weather[0]["icon"] ?? ""
-            //let icon2 = "http://openweathermap.org/img/wn/\(icon)"
+            let weather = response["weather"] as! NSArray
+            let weatherDict = weather[0] as! Dictionary<String,Any>
+            let descript = weatherDict["description"] as? String ?? ""
+            let icon = weatherDict["icon"] ?? ""
+            let icon2 = "http://openweathermap.org/img/wn/\(icon)"
             let main = response["main"] as! Dictionary<String,Any>
             let temperatura = main["temp"] as? String ?? ""
-            //let place1 = Place(name: nomePlace, placeDescription: descrip, icon: icon, temperature: temperatura)
-            //self.places += [place1]
+            let place1 = Place(name: nomePlace, placeDescription: descript, icon: icon2, temperature: temperatura)
+            self.places += [place1]
+            print(place1.placeDescription)
+            self.tableView.reloadData()
             
         }
         /*
@@ -106,7 +107,7 @@ class TableViewController: UITableViewController {
             
         }
  */
-        tableView.reloadData()
+        
     }
     
     func listCity (city: String, completion: @escaping (Dictionary<String, Any>) -> Void){

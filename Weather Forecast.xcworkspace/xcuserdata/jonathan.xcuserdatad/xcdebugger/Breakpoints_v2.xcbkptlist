@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather Forecast/Controller/TableViewController.swift"
-            timestampString = "605717238.789012"
+            timestampString = "605804114.034525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weather Forecast/Controller/TableViewController.swift"
-            timestampString = "605717238.790644"
+            timestampString = "605804114.0384099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "loadCity()"
             landmarkType = "7">
          </BreakpointContent>
